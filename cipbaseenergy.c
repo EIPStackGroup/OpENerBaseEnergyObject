@@ -58,7 +58,7 @@ EipStatus CipBaseEnergyInit(void) {
                                      3, /* # instance services*/
                                      1, /* # instances*/
                                      "Base Energy", /* class name */
-                                     2,                                     /* # class revision*/
+                                     2, /* # class revision*/
                                      &InitializeCipBaseEnergy); /* # function pointer for initialization*/
 
   if (NULL == base_energy_class) {
@@ -101,7 +101,7 @@ EipStatus CipBaseEnergyInit(void) {
   InsertService(base_energy_class, kGetAttributeSingle,
                 &GetAttributeSingleBaseEnergy, "GetAttributeSingle");
 
-  InsertService(base_energy_class, kGetAttributeAll, &GetAttributeAllBaseEnergy,
+  InsertService(base_energy_class, kGetAttributeAll, &GetAttributeAll,
                 "GetAttributeAll");
 
   InsertService(base_energy_class, kSetAttributeSingle,
@@ -228,26 +228,6 @@ int encodeINTOdometer(CipLint odometer_value,
     temp_value /= 1000;
   }
   return return_value;
-}
-
-/*****************************************************************************
-*
-* CIP-Class specific getAttributeAll implementation
-*
-*****************************************************************************/
-EipStatus GetAttributeAllBaseEnergy(CipInstance *instance,
-                                    CipMessageRouterRequest *message_router_request,
-                                    CipMessageRouterResponse *message_router_response,
-                                    const struct sockaddr *originator_address,
-                                    const int encapsulation_session) {
-  EipStatus retval;
-  retval = GetAttributeAll(instance,
-                           message_router_request,
-                           message_router_response,
-                           originator_address,
-                           encapsulation_session);
-  return retval;
-
 }
 
 EipStatus SetAttributeSingleBaseEnergy(
