@@ -151,8 +151,8 @@ CipBool
 BaseEnergyProcessStateStopping(
   );
 
-int encodeUINTOdometer(CipUlint odometer_value,
-                       CipOctet **message);
-int encodeINTOdometer(CipLint odometer_value,
-                      CipOctet **message);
+void EncodeUINTOdometer(const void *const data, ENIPMessage *const outgoing_message);
+
+void EncodeINTOdometer(const void *const data, ENIPMessage *const outgoing_message);
+
 #endif /* IP_BASE_ENERGY_OBJECT_H_ */
